@@ -1,5 +1,5 @@
-let test = 'QEQ';
+const test = 'QEQ';
 
-const testFunc = () => test + 'qwe';
+const testFunc = () => `${test}qwe`;
 
-console.log(testFunc());
+testFunc();

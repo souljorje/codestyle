@@ -9,6 +9,12 @@ const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const webpack = require('webpack-stream');
 const eslint = require('gulp-eslint');
+const cache = require('gulp-cached');
+const gulpIf = require('gulp-if');
+const through2 = require('through2').obj;
+const combine = require('stream-combiner2').obj
+const fs = require('fs');
+const changed = require('gulp-changed');
 const csso = require('gulp-csso');
 const prefix = require('gulp-autoprefixer');
 const imagemin = require('imagemin-pngquant');
@@ -52,12 +58,12 @@ gulp.task('server', () => {
 
 gulp.task('clean', () => del.sync('dist'));
 
-gulp.task('lint', () => gulp.src(path.src.js)
-  .pipe(eslint({
-    fix: true,
-  }))
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError()));
+gulp.task('lint', () => {
+    return gulp.src(path.src.js)
+        .pipe(eslint({fix: true}))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
 
 gulp.task('html:build', () => gulp.src(path.src.pug)
   .pipe(pug({ pretty: true }))
