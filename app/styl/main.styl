@@ -1,0 +1,52 @@
+@import 'include/mixins.styl'
+@import 'include/normalize.styl'
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+.container
+    max-width 1170px
+    margin auto
+
+.table-wrap
+    width 100%
+    overflow auto
+    cursor move
+    cursor -webkit-grab
+    user-select none
+    -webkit-user-select none
+    .table
+        border-collapse collapse
+        position relative
+        td
+            padding 10px
+            border solid 1px #000
+            min-width 300px
+            &:first-child
+                min-width 100px
+                width 100px
+    .table-fix
+        table
+            tr
+                background-color #fff
+            td
+                padding 10px
+                border solid 1px #000
+                min-width 300px
+                &:first-child
+                    width 100px
+                    min-width 100px
+.table-fix
+    position fixed
+    z-index 2
+    top 0
+    overflow hidden
+    table
+        border-collapse collapse!important
+        tr
+            background-color #fff
+            td
+                padding 10px
+                border solid 1px #000
+                width 300px
+                &:first-child
+                    width 100px
+                    min-width 100px
